@@ -12,7 +12,7 @@ export interface Env {
 export default {
 	async fetch(request: Request, env: Env, _ctx: ExecutionContext): Promise<Response> {
 		const stellatePlugin = createStellateLoggerPlugin({
-			serviceName: env.DEV ? 'stellate-graphql-demo-service' : 'tuval-simha',
+			serviceName: env.DEV ? 'stellate-graphql-demo-service' : 'pokemon-demo-website',
 			token: env.DEV ? env.STELLATE_TOKEN : env.STELLATE_TOKEN_MAIN,
 			fetch: fetch,
 		});
