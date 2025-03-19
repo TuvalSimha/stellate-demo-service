@@ -1,7 +1,8 @@
 'use client';
 
 import { useQuery } from 'urql';
-import { useRouter, useParams } from 'next/navigation'; // Import useParams
+import { useRouter, useParams } from 'next/navigation';
+import Image from 'next/image'; // Use next/image for optimized images
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft } from 'lucide-react';
@@ -31,11 +32,11 @@ const POKEMON_BY_ID_QUERY = `
 
 export default function PokemonDetail() {
   const router = useRouter();
-  const params = useParams(); // Get params
-  const id = params.id as string; // Ensure it's a string
+  const params = useParams();
+  const id = params.id as string;
 
-  const nextPokomonId = parseInt(id, 10) + 1;
-  const previousPokomonId = parseInt(id, 10) - 1;
+  const nextPokemonId = parseInt(id, 10) + 1;
+  const previousPokemonId = parseInt(id, 10) - 1;
 
   const [isMounted, setIsMounted] = useState(false);
 
@@ -122,8 +123,8 @@ export default function PokemonDetail() {
         </Card>
       </div>
       <div className='flex flex-row justify-between w-full'>
-        <PreviousPokomonButton id={previousPokomonId} />
-        <NextPokomonButton id={nextPokomonId} />
+        <PreviousPokemonButton id={previousPokemonId} />
+        <NextPokemonButton id={nextPokemonId} />
       </div>
     </div>
   );
@@ -134,17 +135,26 @@ function renderSprite(url: string | null, label: string) {
 
   return (
     <div className='flex flex-col items-center'>
-      <img src={url || '/placeholder.svg'} alt={label} className='w-20 h-20' />
+      <Image
+        src={url}
+        alt={label}
+        width={80}
+        height={80}
+        className='w-20 h-20'
+      />
       <div className='text-xs text-center mt-1'>{label}</div>
     </div>
   );
 }
 
-function redirectToNextPokemon(id: number, router: any) {
+function redirectToNextPokemon(
+  id: number,
+  router: ReturnType<typeof useRouter>
+) {
   router.push(`/${id}`);
 }
 
-function NextPokomonButton({ id }: { id: number }) {
+function NextPokemonButton({ id }: { id: number }) {
   const router = useRouter();
   return (
     <Button
@@ -157,7 +167,7 @@ function NextPokomonButton({ id }: { id: number }) {
   );
 }
 
-function PreviousPokomonButton({ id }: { id: number }) {
+function PreviousPokemonButton({ id }: { id: number }) {
   const router = useRouter();
   return (
     <Button
@@ -220,7 +230,7 @@ function LoadingSkeleton() {
   );
 }
 
-function ErrorCard({ error }: { error: any }) {
+function ErrorCard({ error }: { error: { message: string } }) {
   const router = useRouter();
 
   return (
