@@ -5,7 +5,7 @@ import type React from 'react';
 import { cacheExchange, createClient, fetchExchange, Provider } from 'urql';
 
 export const client = createClient({
-  url: 'https://stellate-graphql-demo-service.tuval-simha-1cf.workers.dev/graphql',
+  url: 'https://pokemon-demo-website.stellate.sh/',
   exchanges: [cacheExchange, fetchExchange],
 });
 
