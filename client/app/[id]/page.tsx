@@ -135,13 +135,7 @@ function renderSprite(url: string | null, label: string) {
 
   return (
     <div className='flex flex-col items-center'>
-      <Image
-        src={url}
-        alt={label}
-        width={80}
-        height={80}
-        className='w-20 h-20'
-      />
+      <Image src={url} alt={label} width={80} height={80} />
       <div className='text-xs text-center mt-1'>{label}</div>
     </div>
   );
