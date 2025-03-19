@@ -1,6 +1,7 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { useQuery } from 'urql';
 import {
   Table,
@@ -121,12 +122,13 @@ export function PokemonTable() {
                     </TableCell>
                     <TableCell>
                       {pokemon.sprites.front_default && (
-                        <img
-                          src={
-                            pokemon.sprites.front_default || '/placeholder.svg'
-                          }
+                        <Image
+                          src={pokemon.sprites.front_default}
                           alt={pokemon.name}
+                          width={48} // Explicit width
+                          height={48} // Explicit height
                           className='w-12 h-12'
+                          unoptimized // Optional: Remove if using a custom loader
                         />
                       )}
                     </TableCell>
