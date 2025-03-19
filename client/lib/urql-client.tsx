@@ -5,8 +5,8 @@ import type React from 'react';
 import { cacheExchange, createClient, fetchExchange, Provider } from 'urql';
 
 export const client = createClient({
-  url: 'https://pokemon-demo-website.stellate.sh/',
-  exchanges: [cacheExchange, fetchExchange],
+  url: 'https://pokemon-demo-website.stellate.sh',
+  exchanges: [],
 });
 
 export function URQLProvider({ children }: { children: React.ReactNode }) {
