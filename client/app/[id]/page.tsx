@@ -8,27 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useEffect, useState } from 'react';
-
-const POKEMON_BY_ID_QUERY = `
-  query getPokemonById($id: ID!) {
-    getPokemonById(id: $id) {
-      id
-      name
-      height
-      weight
-      sprites {
-        front_default
-        front_shiny
-        front_female
-        front_shiny_female
-        back_default
-        back_shiny
-        back_female
-        back_shiny_female
-      }
-    }
-  }
-`;
+import { POKEMON_BY_ID_QUERY } from '@/graphql/POKEMON_BY_ID_QUERY';
 
 export default function PokemonDetail() {
   const router = useRouter();

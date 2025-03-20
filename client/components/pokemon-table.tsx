@@ -14,25 +14,7 @@ import {
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-const ALL_POKEMONS_QUERY = `
-  query ($limit: Int!, $offset: Int!) {
-    allPokemons(limit: $limit, offset: $offset) {
-      total
-      previous
-      next
-      results {
-        id
-        name
-        height
-        weight
-        sprites {
-          front_default
-        }
-      }
-    }
-  }
-`;
+import { ALL_POKEMONS_QUERY } from '@/graphql/ALL_POKEMONS_QUERY';
 
 type Pokemon = {
   id: number;
