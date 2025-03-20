@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate": "graphql-codegen"
+    "generate": "graphql-codegen",
+    "backend:dev": "pnpm generate && cd backend && npm run dev",
+    "backend:build": "pnpm generate && cd backend && npm run build",
+    "client:dev": "pnpm generate && cd client && npm run dev",
+    "client:build": "pnpm generate && cd client && npm run build"
   },
   "dependencies": {
     "@graphql-codegen/cli": "5.0.5",
