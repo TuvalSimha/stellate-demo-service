@@ -12,8 +12,8 @@ export interface Env {
 export default {
 	async fetch(request: Request, env: Env, _ctx: ExecutionContext): Promise<Response> {
 		const stellatePlugin = createStellateLoggerPlugin({
-			serviceName: 'pokemon-demo-website',
-			token: env.STELLATE_TOKEN_MAIN,
+			serviceName: env.DEV ? 'tuvalsimha' : 'pokemon-demo-website',
+			token: env.DEV ? env.STELLATE_TOKEN : env.STELLATE_TOKEN_MAIN,
 			fetch: fetch,
 		});
 
