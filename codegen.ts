@@ -7,7 +7,7 @@ const config: CodegenConfig = {
     './backend/src/__generate__/resolvers-types.ts': {
       plugins: ['typescript', 'typescript-resolvers'],
     },
-    './client/src/gql/': {
+    './client/__generate__/gql/': {
       preset: 'client',
     },
   },
