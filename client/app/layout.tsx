@@ -3,9 +3,9 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Header } from '@/components/header';
-import { URQLProvider } from './providers';
 import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/lib/utils';
+import { URQLProvider } from '@/lib/urql-client';
 
 const inter = Inter({ subsets: ['latin'] });
 
