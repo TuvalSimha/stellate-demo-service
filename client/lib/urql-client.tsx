@@ -1,11 +1,11 @@
 'use client';
-import type React from 'react';
 
-import { createClient, Provider } from 'urql';
+import { cacheExchange, createClient, fetchExchange, Provider } from 'urql';
+import React from 'react';
 
-export const client = createClient({
+const client = createClient({
   url: 'https://pokemon-demo-website.stellate.sh/',
-  exchanges: [],
+  exchanges: [cacheExchange, fetchExchange],
 });
 
 export function URQLProvider({ children }: { children: React.ReactNode }) {

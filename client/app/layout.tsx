@@ -6,6 +6,7 @@ import { Header } from '@/components/header';
 import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/lib/utils';
 import { URQLProvider } from '@/lib/urql-client';
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,20 +22,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={cn('font-sans text-text text-base px-10', inter)}>
-        <ThemeProvider
-          attribute='class'
-          defaultTheme='system'
-          enableSystem
-          disableTransitionOnChange
-        >
-          <URQLProvider>
+      <body
+        className={cn('font-sans text-text text-base px-10', inter)}
+        suppressHydrationWarning
+      >
+        <URQLProvider>
+          <ThemeProvider
+            attribute='class'
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
+          >
             <div className='min-h-screen flex flex-col'>
               <Header />
-              <main className='flex-1 container py-6'>{children}</main>
+              <main className='flex-1 container py-6'>
+                {children}
+                <Analytics />
+              </main>
             </div>
-          </URQLProvider>
-        </ThemeProvider>
+          </ThemeProvider>
+        </URQLProvider>
       </body>
     </html>
   );
