@@ -5,15 +5,14 @@ import { createStellateLoggerPlugin } from 'stellate/graphql-yoga';
 
 export interface Env {
 	STELLATE_TOKEN: string;
-	STELLATE_TOKEN_MAIN: string;
-	DEV: boolean;
+	STELLATE_SERVICE_NAME: string;
 }
 
 export default {
 	async fetch(request: Request, env: Env, _ctx: ExecutionContext): Promise<Response> {
 		const stellatePlugin = createStellateLoggerPlugin({
-			serviceName: env.DEV ? 'tuvalsimha' : 'pokemon-demo-website',
-			token: env.DEV ? env.STELLATE_TOKEN : env.STELLATE_TOKEN_MAIN,
+			serviceName: env.STELLATE_SERVICE_NAME,
+			token: env.STELLATE_TOKEN,
 			fetch: fetch,
 		});
 
